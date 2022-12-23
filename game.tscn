@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://folowMousse.cs" type="Script" id=1]
+[ext_resource path="res://peggle_1.png" type="Texture" id=2]
+[ext_resource path="res://peggle_0.png" type="Texture" id=3]
+
+[node name="game" type="Node2D"]
+
+[node name="Peggle0" type="Sprite" parent="."]
+position = Vector2( 500, -2 )
+rotation = -0.0355101
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Peggle1" type="Sprite" parent="Peggle0"]
+position = Vector2( 0, 16 )
+texture = ExtResource( 2 )
+
+[node name="followMouse" type="Node" parent="Peggle0"]
+script = ExtResource( 1 )
