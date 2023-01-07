@@ -16,10 +16,6 @@ public class shoot : Node
     public float fireRate = 1.0f;
     float lastFire = 0.0f;
 
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -45,8 +41,13 @@ public class shoot : Node
 
                 GetTree().Root.AddChild((Node)oball);
 
+                
+                compterBall.compter.RemoveBall();
+
+                ((RigidBody2D)oball).AddForce(Vector2.Zero,(this.GetParent<Node2D>().GlobalTransform.y) * 100);
+
                 //direction de l'objet a tirer
-                oball.GetChild<moveball>(0).direction = (this.GetParent<Node2D>().GlobalTransform.y);
+                //oball.GetChild<moveball>(0).direction = (this.GetParent<Node2D>().GlobalTransform.y);
 
             }
     }

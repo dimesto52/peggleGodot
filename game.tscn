@@ -1,15 +1,215 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://folowMousse.cs" type="Script" id=1]
 [ext_resource path="res://peggle_1.png" type="Texture" id=2]
 [ext_resource path="res://peggle_0.png" type="Texture" id=3]
 [ext_resource path="res://ball.tscn" type="PackedScene" id=4]
 [ext_resource path="res://shoot.cs" type="Script" id=5]
+[ext_resource path="res://peggle_3.png" type="Texture" id=6]
+[ext_resource path="res://peggle_2.png" type="Texture" id=7]
+[ext_resource path="res://bucket_0.png" type="Texture" id=8]
+[ext_resource path="res://bucket_1.png" type="Texture" id=9]
+[ext_resource path="res://outball.cs" type="Script" id=10]
+[ext_resource path="res://bucketCompter.cs" type="Script" id=11]
+[ext_resource path="res://drawCompterString.cs" type="Script" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 12 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 2 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 2, 16 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 12, 16 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 2, 16 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 6.75, 3.75 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 91, 3.75 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 4.125, 9.8125 )
 
 [node name="game" type="Node2D"]
 
+[node name="wall" type="Node2D" parent="."]
+position = Vector2( 165, 2 )
+
+[node name="Peggle3" type="Sprite" parent="wall"]
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall/Peggle3"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/Peggle3/StaticBody2D"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 1 )
+
+[node name="Peggle4" type="Sprite" parent="wall"]
+position = Vector2( 0, 298 )
+scale = Vector2( 1, 24.6667 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 4, 32, 24 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall/Peggle4"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/Peggle4/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Peggle5" type="Sprite" parent="wall"]
+position = Vector2( 0, 596 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 28, 32, 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall/Peggle5"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/Peggle5/StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="wall2" type="Node2D" parent="."]
+position = Vector2( 849, 2 )
+
+[node name="Peggle3" type="Sprite" parent="wall2"]
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall2/Peggle3"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2/Peggle3/StaticBody2D"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 1 )
+
+[node name="Peggle4" type="Sprite" parent="wall2"]
+position = Vector2( 0, 298 )
+scale = Vector2( 1, 24.6667 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 4, 32, 24 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall2/Peggle4"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2/Peggle4/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Peggle5" type="Sprite" parent="wall2"]
+position = Vector2( 0, 596 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 28, 32, 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall2/Peggle5"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2/Peggle5/StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="wall3" type="Node2D" parent="."]
+position = Vector2( 504, -293 )
+
+[node name="Peggle3" type="Sprite" parent="wall3"]
+position = Vector2( -322, 309 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall3/Peggle3"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3/Peggle3/StaticBody2D"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 6 )
+
+[node name="Peggle4" type="Sprite" parent="wall3"]
+position = Vector2( 3.00001, 309 )
+scale = Vector2( 26.9167, 1 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 4, 0, 24, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall3/Peggle4"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3/Peggle4/StaticBody2D"]
+shape = SubResource( 5 )
+
+[node name="Peggle5" type="Sprite" parent="wall3"]
+position = Vector2( 328, 309 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 28, 0, 4, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall3/Peggle5"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3/Peggle5/StaticBody2D"]
+shape = SubResource( 7 )
+
 [node name="Peggle0" type="Sprite" parent="."]
-position = Vector2( 500, 0 )
+position = Vector2( 507, 16 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 __meta__ = {
@@ -27,3 +227,63 @@ script = ExtResource( 1 )
 script = ExtResource( 5 )
 ball = ExtResource( 4 )
 offset = 25.0
+
+[node name="Bucket0" type="Sprite" parent="."]
+position = Vector2( 515, 605 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+
+[node name="Bucket1" type="Sprite" parent="Bucket0"]
+position = Vector2( 0, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="Bucket0/Bucket1"]
+script = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket0/Bucket1/Area2D"]
+position = Vector2( 0, 9.5 )
+shape = SubResource( 8 )
+
+[node name="bord" type="StaticBody2D" parent="Bucket0"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket0/bord"]
+polygon = PoolVector2Array( 15, -9.5, 7, 14.5, -7, 14.5, -15.25, -9.75, -16, -9.75, -7.75, 16.5, 7.75, 16.5, 16, -9.5 )
+
+[node name="Peggle2" type="Sprite" parent="."]
+position = Vector2( 36, 44 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Peggle2"]
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 30.0
+margin_bottom = 7.0
+text = "x 01"
+script = ExtResource( 12 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 515, 607 )
+scale = Vector2( 4, 4 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( -0.5, 21.5 )
+shape = SubResource( 9 )
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2( 515, 607 )
+scale = Vector2( 4, 4 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2( -87.375, 8.125 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2( 83.75, 7.9375 )
+shape = SubResource( 10 )
+
+[connection signal="body_entered" from="Bucket0/Bucket1/Area2D" to="Bucket0/Bucket1/Area2D" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_Area2D2_body_entered"]
+[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_Area2D3_body_entered"]
