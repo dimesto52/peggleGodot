@@ -15,6 +15,7 @@ public class outball : Area2D
 
     public void _on_Area2D2_body_entered(Node body)
     {
+        this.GetTree().Root.RemoveChild(body);
         body.Dispose();
         GD.Print("destroy");
     }

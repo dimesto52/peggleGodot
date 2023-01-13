@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://folowMousse.cs" type="Script" id=1]
 [ext_resource path="res://peggle_1.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://outball.cs" type="Script" id=10]
 [ext_resource path="res://bucketCompter.cs" type="Script" id=11]
 [ext_resource path="res://drawCompterString.cs" type="Script" id=12]
+[ext_resource path="res://bucketMove.cs" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 1.5 )
@@ -235,6 +236,7 @@ texture = ExtResource( 8 )
 
 [node name="Bucket1" type="Sprite" parent="Bucket0"]
 position = Vector2( 0, 0.5 )
+z_index = 2
 texture = ExtResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="Bucket0/Bucket1"]
@@ -248,6 +250,11 @@ shape = SubResource( 8 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bucket0/bord"]
 polygon = PoolVector2Array( 15, -9.5, 7, 14.5, -7, 14.5, -15.25, -9.75, -16, -9.75, -7.75, 16.5, 7.75, 16.5, 16, -9.5 )
+
+[node name="move" type="Node" parent="Bucket0"]
+script = ExtResource( 13 )
+min = 250.0
+max = 770.0
 
 [node name="Peggle2" type="Sprite" parent="."]
 position = Vector2( 36, 44 )

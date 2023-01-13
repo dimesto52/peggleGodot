@@ -17,13 +17,8 @@ public class bucketCompter : Area2D
     {
         compterBall.compter.AddBall();
 
+        this.GetTree().Root.RemoveChild(body);
         body.Dispose();
         GD.Print("bucket");
     }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }
