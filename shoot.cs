@@ -29,26 +29,27 @@ public class shoot : Node
         lastFire += delta;
 
         //verification de touche appuyer et du timer
-        if (Input.IsActionPressed("click"))
-            if (lastFire > fireRate)
-            {
-                //remise a zero du timer
-                lastFire = 0;
+        if(compterBall.compter.numBall > 0)
+            if (Input.IsActionPressed("click"))
+                if (lastFire >= fireRate)
+                {
+                    //remise a zero du timer
+                    lastFire = 0;
 
-                //instansiation de l'objet a tirer
-                Node2D oball = ball.Instance<Node2D>();
-                oball.Position = this.GetParent<Node2D>().Position - (-this.GetParent<Node2D>().GlobalTransform.y) * offset;
+                    //instansiation de l'objet a tirer
+                    Node2D oball = ball.Instance<Node2D>();
+                    oball.Position = this.GetParent<Node2D>().Position - (-this.GetParent<Node2D>().GlobalTransform.y) * offset;
 
-                GetTree().Root.AddChild((Node)oball);
+                    GetTree().Root.AddChild((Node)oball);
 
-                
-                compterBall.compter.RemoveBall();
+                    
+                    compterBall.compter.RemoveBall();
 
-                ((RigidBody2D)oball).AddForce(Vector2.Zero,(this.GetParent<Node2D>().GlobalTransform.y) * 100);
+                    ((RigidBody2D)oball).AddForce(Vector2.Zero,(this.GetParent<Node2D>().GlobalTransform.y) * 100);
 
-                //direction de l'objet a tirer
-                //oball.GetChild<moveball>(0).direction = (this.GetParent<Node2D>().GlobalTransform.y);
+                    //direction de l'objet a tirer
+                    //oball.GetChild<moveball>(0).direction = (this.GetParent<Node2D>().GlobalTransform.y);
 
-            }
+                }
     }
 }

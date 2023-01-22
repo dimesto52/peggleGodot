@@ -22,6 +22,6 @@ public class moveball : Node
     {
 
         //mise a jour du mouvement
-        this.GetParent<Node2D>().Position += direction * delta * speed; 
+        //this.GetParent<Node2D>().Position += direction * delta * speed; 
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://folowMousse.cs" type="Script" id=1]
 [ext_resource path="res://peggle_1.png" type="Texture" id=2]
@@ -13,6 +13,13 @@
 [ext_resource path="res://bucketCompter.cs" type="Script" id=11]
 [ext_resource path="res://drawCompterString.cs" type="Script" id=12]
 [ext_resource path="res://bucketMove.cs" type="Script" id=13]
+[ext_resource path="res://platformTopRight.tscn" type="PackedScene" id=14]
+[ext_resource path="res://platformBot.tscn" type="PackedScene" id=15]
+[ext_resource path="res://platformPoint.tscn" type="PackedScene" id=16]
+[ext_resource path="res://platformTopLeft.tscn" type="PackedScene" id=17]
+[ext_resource path="res://platformTop.tscn" type="PackedScene" id=18]
+[ext_resource path="res://platformBotLeft.tscn" type="PackedScene" id=19]
+[ext_resource path="res://platformBotRight.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 1.5 )
@@ -291,6 +298,112 @@ shape = SubResource( 10 )
 position = Vector2( 83.75, 7.9375 )
 shape = SubResource( 10 )
 
+[node name="KinematicBody2D" parent="." instance=ExtResource( 16 )]
+position = Vector2( 506, 216 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="KinematicBody2D5" parent="." instance=ExtResource( 16 )]
+position = Vector2( 804, 163 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="KinematicBody2D6" parent="." instance=ExtResource( 16 )]
+position = Vector2( 720, 212 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="KinematicBody2D3" parent="." instance=ExtResource( 16 )]
+position = Vector2( 619, 152 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="KinematicBody2D2" parent="." instance=ExtResource( 16 )]
+position = Vector2( 387, 150 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="KinematicBody2D4" parent="." instance=ExtResource( 16 )]
+position = Vector2( 291, 202 )
+rotation = 1.83022
+scale = Vector2( 1.5, 1.5 )
+
+[node name="KinematicBody2D7" parent="." instance=ExtResource( 16 )]
+position = Vector2( 206, 139 )
+rotation = 1.83022
+scale = Vector2( 1.5, 1.5 )
+
+[node name="platformTopLeft" parent="." instance=ExtResource( 17 )]
+position = Vector2( 504, 337 )
+scale = Vector2( 4, 4 )
+
+[node name="platformTopRight" parent="." instance=ExtResource( 14 )]
+position = Vector2( 505, 336 )
+scale = Vector2( 4, 4 )
+
+[node name="platformTop" parent="." instance=ExtResource( 18 )]
+position = Vector2( 505, 337 )
+scale = Vector2( 4, 4 )
+
+[node name="platformTopLeft2" parent="." instance=ExtResource( 17 )]
+position = Vector2( 286, 331 )
+scale = Vector2( 4, 4 )
+
+[node name="platformTopRight2" parent="." instance=ExtResource( 14 )]
+position = Vector2( 287, 330 )
+scale = Vector2( 4, 4 )
+
+[node name="platformTop2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 287, 331 )
+scale = Vector2( 4, 4 )
+
+[node name="platformTopLeft3" parent="." instance=ExtResource( 17 )]
+position = Vector2( 723, 350 )
+scale = Vector2( 4, 4 )
+
+[node name="platformTopRight3" parent="." instance=ExtResource( 14 )]
+position = Vector2( 724, 349 )
+scale = Vector2( 4, 4 )
+
+[node name="platformTop3" parent="." instance=ExtResource( 18 )]
+position = Vector2( 724, 350 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBotLeft" parent="." instance=ExtResource( 19 )]
+position = Vector2( 614, 345 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBotLeft3" parent="." instance=ExtResource( 19 )]
+position = Vector2( 831, 352 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBotRight" parent="." instance=ExtResource( 20 )]
+position = Vector2( 614, 348 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBot" parent="." instance=ExtResource( 15 )]
+position = Vector2( 616, 346 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBot4" parent="." instance=ExtResource( 15 )]
+position = Vector2( 831, 352 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBotLeft2" parent="." instance=ExtResource( 19 )]
+position = Vector2( 395, 334 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBotRight2" parent="." instance=ExtResource( 20 )]
+position = Vector2( 395, 337 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBotRight3" parent="." instance=ExtResource( 20 )]
+position = Vector2( 178, 329 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBot2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 397, 335 )
+scale = Vector2( 4, 4 )
+
+[node name="platformBot3" parent="." instance=ExtResource( 15 )]
+position = Vector2( 180, 329 )
+scale = Vector2( 4, 4 )
+
 [connection signal="body_entered" from="Bucket0/Bucket1/Area2D" to="Bucket0/Bucket1/Area2D" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_Area2D2_body_entered"]
-[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_Area2D3_body_entered"]
+[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_Area2D_body_entered"]
