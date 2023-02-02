@@ -29,7 +29,7 @@ public class shoot : Node
         lastFire += delta;
 
         //verification de touche appuyer et du timer
-        if(compterBall.compter.numBall > 0)
+        if(compterBall.compter.numBall > 0 && onBoardBallCount.Count <= 0 && leftPlatformCount.Count > 0)
             if (Input.IsActionPressed("click"))
                 if (lastFire >= fireRate)
                 {
@@ -45,7 +45,7 @@ public class shoot : Node
                     
                     compterBall.compter.RemoveBall();
 
-                    ((RigidBody2D)oball).AddForce(Vector2.Zero,(this.GetParent<Node2D>().GlobalTransform.y) * 100);
+                    ((RigidBody2D)oball).ApplyCentralImpulse((this.GetParent<Node2D>().GlobalTransform.y) * 100);
 
                     //direction de l'objet a tirer
                     //oball.GetChild<moveball>(0).direction = (this.GetParent<Node2D>().GlobalTransform.y);

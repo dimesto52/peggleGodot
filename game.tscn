@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://folowMousse.cs" type="Script" id=1]
 [ext_resource path="res://peggle_1.png" type="Texture" id=2]
@@ -20,6 +20,9 @@
 [ext_resource path="res://platformTop.tscn" type="PackedScene" id=18]
 [ext_resource path="res://platformBotLeft.tscn" type="PackedScene" id=19]
 [ext_resource path="res://platformBotRight.tscn" type="PackedScene" id=20]
+[ext_resource path="res://platformPeggle_1.png" type="Texture" id=21]
+[ext_resource path="res://drawplatformString.cs" type="Script" id=22]
+[ext_resource path="res://detectWinLose.cs" type="Script" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 1.5 )
@@ -263,18 +266,31 @@ script = ExtResource( 13 )
 min = 250.0
 max = 770.0
 
-[node name="Peggle2" type="Sprite" parent="."]
+[node name="ballUI" type="Sprite" parent="."]
 position = Vector2( 36, 44 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 7 )
 
-[node name="Label" type="Label" parent="Peggle2"]
+[node name="Label" type="Label" parent="ballUI"]
 margin_left = 3.0
 margin_top = -7.0
 margin_right = 30.0
 margin_bottom = 7.0
 text = "x 01"
 script = ExtResource( 12 )
+
+[node name="PlatformUI" type="Sprite" parent="."]
+position = Vector2( 37, 139 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="PlatformUI"]
+margin_left = 3.25
+margin_top = -18.0
+margin_right = 30.25
+margin_bottom = -4.0
+text = "x 01"
+script = ExtResource( 22 )
 
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2( 515, 607 )
@@ -404,6 +420,79 @@ scale = Vector2( 4, 4 )
 position = Vector2( 180, 329 )
 scale = Vector2( 4, 4 )
 
+[node name="uiWinLose" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 23 )
+WinUiRef = "WinUI"
+LoseUiRef = "LoseUI"
+
+[node name="WinUI" type="Control" parent="uiWinLose"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="uiWinLose/WinUI"]
+margin_left = 193.0
+margin_top = 87.0
+margin_right = 255.0
+margin_bottom = 117.0
+rect_scale = Vector2( 10, 10 )
+text = "YOU WIN"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="uiWinLose/WinUI"]
+margin_left = 386.0
+margin_top = 306.0
+margin_right = 624.0
+margin_bottom = 350.0
+
+[node name="Label" type="Label" parent="uiWinLose/WinUI/Button"]
+margin_left = 50.0
+margin_right = 112.0
+margin_bottom = 21.0
+rect_scale = Vector2( 2, 2 )
+text = "retry ?"
+align = 1
+valign = 1
+
+[node name="PlatformPeggle1" type="Sprite" parent="uiWinLose/WinUI"]
+position = Vector2( 38, 95 )
+texture = ExtResource( 21 )
+
+[node name="LoseUI" type="Control" parent="uiWinLose"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="uiWinLose/LoseUI"]
+margin_left = 193.0
+margin_top = 87.0
+margin_right = 255.0
+margin_bottom = 117.0
+rect_scale = Vector2( 10, 10 )
+text = "YOU LOSE"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="uiWinLose/LoseUI"]
+margin_left = 386.0
+margin_top = 306.0
+margin_right = 624.0
+margin_bottom = 350.0
+
+[node name="Label" type="Label" parent="uiWinLose/LoseUI/Button"]
+margin_left = 50.0
+margin_right = 112.0
+margin_bottom = 21.0
+rect_scale = Vector2( 2, 2 )
+text = "retry ?"
+align = 1
+valign = 1
+
 [connection signal="body_entered" from="Bucket0/Bucket1/Area2D" to="Bucket0/Bucket1/Area2D" method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_Area2D2_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="uiWinLose/WinUI/Button" to="uiWinLose" method="_on_Button_pressed"]
+[connection signal="pressed" from="uiWinLose/LoseUI/Button" to="uiWinLose" method="_on_Button_pressed"]
